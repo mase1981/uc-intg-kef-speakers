@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uc-intg-kef-speakers"
+version = "1.0.0"
+description = "KEF LS50 Wireless / LSX speaker integration for Unfolded Circle Remote Two/3"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MPL-2.0"}
+authors = [
+    {name = "Meir Miyara", email = "meir.miyara@gmail.com"}
+]
+keywords = ["kef", "ls50", "ls50-wireless", "lsx", "speakers", "media-player", "unfolded-circle", "remote", "integration"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Home Automation",
+    "Topic :: Multimedia",
+]
+dependencies = [
+    "ucapi>=0.7.0",
+    "ucapi-framework>=1.9.5",
+    "getmac>=0.9.5",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/mase1981/uc-intg-kef-speakers"
+"Bug Reports" = "https://github.com/mase1981/uc-intg-kef-speakers/issues"
+"Source" = "https://github.com/mase1981/uc-intg-kef-speakers"
+
+[project.scripts]
+uc-intg-kef-speakers = "uc_intg_kef_speakers:main"
+
+[tool.setuptools.packages.find]
+include = ["uc_intg_kef_speakers*"]
+
+[tool.setuptools.package-data]
+uc_intg_kef_speakers = ["*.json"]

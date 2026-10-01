@@ -1,0 +1,39 @@
+{
+  "driver_id": "uc_intg_kef_speakers",
+  "version": "1.0.0",
+  "min_core_api": "0.22.0",
+  "name": {
+    "en": "KEF Wireless Speakers"
+  },
+  "icon": "uc:audio",
+  "description": {
+    "en": "Control KEF LS50 Wireless and KEF LSX speakers over your local network. Media player with power, volume, mute, play/pause, next/previous and source selection (Wi-Fi, Bluetooth, Aux, Optical, USB); a full remote for activities; switches for Desk Mode, Wall Mode, Phase Correction and High-Pass Mode; and selectors for Bass Extension, Sub Polarity, Auto Standby, Speaker Orientation and all DSP EQ values. No KEF account required - control is entirely local."
+  },
+  "developer": {
+    "name": "Meir Miyara",
+    "email": "meir.miyara@gmail.com",
+    "url": "https://github.com/mase1981"
+  },
+  "home_page": "https://github.com/mase1981/uc-intg-kef-speakers",
+  "release_date": "2026-10-01",
+  "setup_data_schema": {
+    "title": {
+      "en": "KEF Speaker Setup"
+    },
+    "settings": [
+      {
+        "id": "info",
+        "label": {
+          "en": "KEF Wireless Speakers"
+        },
+        "field": {
+          "label": {
+            "value": {
+              "en": "Supports KEF LS50 Wireless and KEF LSX (first generation). On the next screen enter the IP address of your speaker and select its model. The speaker must be powered and on the same network as the Remote."
+            }
+          }
+        }
+      }
+    ]
+  }
+}
