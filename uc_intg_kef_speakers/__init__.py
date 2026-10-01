@@ -4,11 +4,28 @@ import asyncio
 import json
 import logging
 import os
+import sys
 from pathlib import Path
 
+
+def _find_driver_json() -> str:
+    """Locate driver.json in source, Docker and PyInstaller (--add-data) layouts."""
+    candidates = [
+        Path(getattr(sys, "_MEIPASS", "")) / "driver.json" if getattr(sys, "frozen", False) else None,
+        Path(__file__).resolve().parent.parent / "driver.json",
+        Path(sys.executable).resolve().parent.parent / "driver.json",
+        Path.cwd() / "driver.json",
+    ]
+    for path in candidates:
+        if path is not None and path.is_file():
+            return str(path)
+    return str(Path(__file__).resolve().parent.parent / "driver.json")
+
+
+DRIVER_JSON = _find_driver_json()
+
 try:
-    _driver_path = Path(__file__).parent.parent / "driver.json"
-    with open(_driver_path, "r", encoding="utf-8") as f:
+    with open(DRIVER_JSON, "r", encoding="utf-8") as f:
         __version__ = json.load(f).get("version", "0.0.0")
 except (FileNotFoundError, json.JSONDecodeError):
     __version__ = "0.0.0"
@@ -46,8 +63,7 @@ async def main() -> None:
     driver.config_manager = config_manager
 
     setup_handler = KEFSetupFlow.create_handler(driver)
-    driver_path = os.path.join(os.path.dirname(__file__), "..", "driver.json")
-    await driver.api.init(os.path.abspath(driver_path), setup_handler)
+    await driver.api.init(DRIVER_JSON, setup_handler)
     await driver.register_all_device_instances(connect=False)
 
     device_count = len(list(config_manager.all()))

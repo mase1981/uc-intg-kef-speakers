@@ -29,6 +29,6 @@ class KEFDriver(BaseIntegrationDriver[KEFDevice, KEFConfig]):
                 create_selects,
                 create_sensors,
             ],
-            driver_id="uc_intg_kef_speakers",
+            driver_id="kef_speakers",
             require_connection_before_registry=False,
         )

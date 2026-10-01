@@ -1,5 +1,5 @@
 {
-  "driver_id": "uc_intg_kef_speakers",
+  "driver_id": "kef_speakers",
   "version": "1.0.0",
   "min_core_api": "0.22.0",
   "name": {
